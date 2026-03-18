@@ -1,8 +1,8 @@
 # stats220
 
-This is my repo for STATS 220. 
+# This is my repo for STATS 220. 
 
-A little about me:
+## A little about me:
 
 - I am undertaking a degree in Bachelor of Science double majoring in exercise science and statistics
 - I am taking STATS 220 because it helps provide a foundational basis for data analysis that helps with the stats component of my degree
