@@ -10,6 +10,7 @@
 * I am taking STATS 220 because it helps provide a foundational basis for data analysis that helps with the stats component of my degree
 * I am interested in learning about understanding data in media contexts
 * In my spare time, I like to play geography games on https://www.sporcle.com/games/category/geography
+* I highly enjoy watching tvshows in different languages on https://www.netflix.com/nz/
 
 **A meme that captures how I currently feel about my university studies is:**
 ![](https://c.tenor.com/TT01mwKmcIcAAAAd/tenor.gif)
