@@ -1,0 +1,84 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+library(tidyverse)
+```
+
+```{css}
+
+```
+
+## Analysis of Social Media Video lengths and Viewing Behaviours Based on Content Types
+
+I am exploring the how video content type and viewing behavior is related to engagement, This data set has variables like content type, video length, and if the whole video was watched 
+
+```{r}
+#Loading my data
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRC0SV5VHZ9ivmgSLQVSzC5T1gf-426WfbXCcDmeOCa0vE2iGdHBmU7JECqodw7vuj_hIRjfdGj70aT/pub?output=csv")
+
+#Renaming the variables
+latest_data <- logged_data %>%
+  rename(age_group=2,
+         video_often = 3,
+         content_type = 4,
+         video_length = 5,
+         watched_full = 6,
+         media_app = 7)
+```
+
+
+# Graphs
+### Graph 1 shows the type of content the video falls under and whether it was watched till the end
+```{r}
+#Giving it a title and description as well as naming the variables
+latest_data %>%
+  ggplot() +
+  geom_bar(aes(x = content_type, fill = watched_full)) +
+  labs(title = "Which types of videos hold attention?",
+       subtitle = "Comparing content type and viewing behaviour",
+       x = "Content type",
+       y = "Number of videos")
+
+```
+
+### Graph 2 shows the number of videos there are in the data set and how many of them have been watched fully, this is to understand how many videos get skipped
+```{r}
+# A fill color is given to help viewer comprehension
+latest_data %>%
+  ggplot() +
+  geom_bar(aes(x = watched_full), fill = "#7a040a") +
+  labs(title = "Overall viewing behaviour",
+       subtitle = "How often videos are watched fully",
+       x = "Watched full video",
+       y = "Number of videos")
+```
+
+### Graph 3 shows the minimum and maximum of the video lengths, this is to understand the variety of video lengths on short form media apps. The graph in itself cannot provide numeric values properly but can show the visual difference, hence why the text is included.
+
+```{r}
+#Shows min and max of video length
+paste(
+  "The shortest video observed was",
+  min(latest_data$video_length),
+  "seconds, and the longest video was",
+  max(latest_data$video_length),
+  "seconds.")
+
+video_extremes <- data.frame(
+  type = c("Minimum", "Maximum"),
+  length = c(
+    min(latest_data$video_length),
+    max(latest_data$video_length)))
+
+ggplot(video_extremes, aes(x = type, y = length)) +
+  geom_col() +
+  labs(title = "Minimum and Maximum Video Length",
+    x = "Type",
+    y = "Video Length (seconds)")
+```
+
